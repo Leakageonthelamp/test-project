@@ -1,68 +1,43 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">test-project</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
+  <div>
+    <!-- <img src="~/assets/logo.svg" /> -->
+    <h1>{{ title }} 👋</h1>
+    <ul>
+      <li v-for="mountain in mountains" :key="mountain.title">
+        <NuxtLink
+          :to="{ name: 'mountains-slug', params: { slug: mountain.slug } }"
         >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+          {{ mountain.title }}
+        </NuxtLink>
+      </li>
+    </ul>
   </div>
 </template>
-
 <script>
-export default {}
+export default {
+  async asyncData() {
+    const mountains = await fetch('https://api.nuxtjs.dev/mountains').then(
+      (res) => res.json()
+    )
+    return { mountains }
+  },
+  data() {
+    return {
+      title: 'Hello Nuxters!',
+    }
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'The amazing Nuxt application that teaches me all the cool features of Nuxt',
+        },
+      ],
+    }
+  },
+}
 </script>
-
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
