@@ -1,18 +1,21 @@
 <template>
-  <article>
-    <SocialHead
-      :title="mountain.title"
-      :description="mountain.description"
-      :image="mountain.image"
-    />
-    <h1>{{ mountain.title }}</h1>
-    <section>
-      <img :src="mountain.image" :alt="mountain.title" />
-      <p>{{ mountain.description }}</p>
-    </section>
-    <button @click="goBack">Back</button>
-  </article>
+  <div>
+    <article>
+      <SocialHead
+        :title="mountain.title"
+        :description="mountain.description"
+        :image="mountain.image"
+      />
+      <h1>{{ mountain.title }}</h1>
+      <section>
+        <img :src="mountain.image" :alt="mountain.title" />
+        <p>{{ mountain.description }}</p>
+      </section>
+      <button @click="goBack">Back</button>
+    </article>
+  </div>
 </template>
+
 <script>
 export default {
   async asyncData({ params }) {

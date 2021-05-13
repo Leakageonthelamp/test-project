@@ -23,6 +23,8 @@ export default {
 
   head() {
     return {
+      title: this.title,
+      description: this.description,
       meta: [
         {
           hid: 'twitter:title',
