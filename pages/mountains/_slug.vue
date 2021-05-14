@@ -1,22 +1,22 @@
 <template>
   <div>
-    <article>
-      <SocialHead
-        :title="mountain.title"
-        :description="mountain.description"
-        :image="mountain.image"
-      />
-      <h1>{{ mountain.title }}</h1>
-      <section>
-        <img :src="mountain.image" :alt="mountain.title" />
-        <p>{{ mountain.description }}</p>
-      </section>
-      <button @click="goBack">Back</button>
-    </article>
+    <SocialHead
+      :title="metaData.title"
+      :description="metaData.description"
+      :image="metaData.image"
+    />
+    <h1>{{ mountain.title }}</h1>
+    <section>
+      <img :src="mountain.image" :alt="mountain.title" />
+      <p>{{ mountain.description }}</p>
+    </section>
+    <button @click="goBack">Back</button>
   </div>
 </template>
 
 <script>
+import meta from '@/assets/data/mock.json'
+
 export default {
   async asyncData({ params }) {
     const mountain = await fetch(
@@ -24,13 +24,16 @@ export default {
     ).then((res) => res.json())
     return { mountain }
   },
+  data: () => ({
+    metaData: meta.mockData,
+  }),
   head() {
     return {
       link: [
         {
           hid: 'canonical',
           rel: 'canonical',
-          href: `https://nuxtjs.org/mountains/${this.$route.params.slug}`,
+          href: this.$route.fullPath,
         },
       ],
     }
