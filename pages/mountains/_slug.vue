@@ -18,23 +18,26 @@ export default {
     metaData: meta.mockData,
   }),
   head() {
-    return this.$headUtil({
+    return {
       title: this.metaData.title,
-      description: this.metaData.description,
-      urlPath: this.$route.fullPath,
-      image: this.metaData.image,
-    })
+      meta: [
+        { hid: 'og:title', property: 'og:title', content: this.metaData.title },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.metaData.description,
+        },
+        { hid: 'og:image', property: 'og:image', content: this.metaData.image },
+      ],
+    }
   },
   //   head() {
-  //     return {
-  //       link: [
-  //         {
-  //           hid: 'canonical',
-  //           rel: 'canonical',
-  //           href: this.$route.fullPath,
-  //         },
-  //       ],
-  //     }
+  //     return this.$headUtil({
+  //       title: this.metaData.title,
+  //       description: this.metaData.description,
+  //       urlPath: this.$route.fullPath,
+  //       image: this.metaData.image,
+  //     })
   //   },
   methods: {
     goBack() {
