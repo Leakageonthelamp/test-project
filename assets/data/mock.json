@@ -4,6 +4,11 @@
     "description": "Test Description from mock",
     "image": "/share_image/wall-panel-form.png"
   },
+  "mockData2": {
+    "title": "Test Title from mock2",
+    "description": "Test Description from mock2",
+    "image": "/share_image/wall-panel-form.png"
+  },
   "mockHome": {
     "title": "MOCKHOME",
     "description": "MOCKHOME Detail",
