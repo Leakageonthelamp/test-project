@@ -3,5 +3,10 @@
     "title": "Test Title from mock",
     "description": "Test Description from mock",
     "image": "/share_image/wall-panel-form.png"
+  },
+  "mockHome": {
+    "title": "MOCKHOME",
+    "description": "MOCKHOME Detail",
+    "image": "/share_image/wall-panel-form.png"
   }
 }

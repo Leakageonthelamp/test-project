@@ -13,7 +13,10 @@
     </ul>
   </div>
 </template>
+
 <script>
+import meta from '@/assets/data/mock.json'
+
 export default {
   async asyncData() {
     const mountains = await fetch('https://api.nuxtjs.dev/mountains').then(
@@ -24,20 +27,16 @@ export default {
   data() {
     return {
       title: 'Hello Nuxters!',
+      metaData: meta.mockHome,
     }
   },
   head() {
-    return {
-      title: this.title,
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content:
-            'The amazing Nuxt application that teaches me all the cool features of Nuxt',
-        },
-      ],
-    }
+    return this.$headUtil({
+      title: this.metaData.title,
+      description: this.metaData.description,
+      urlPath: this.$route.fullPath,
+      image: this.metaData.image,
+    })
   },
 }
 </script>
