@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{ pageSlug }}
+    {{ name }}
     <div>{{ metaData.title }}</div>
     <div>{{ metaData.description }}</div>
   </div>
@@ -11,6 +11,7 @@ import meta from '@/assets/data/mock.json'
 
 export default {
   data: () => ({
+    name: '',
     metaData: meta.mockData2,
   }),
   head() {
@@ -27,11 +28,6 @@ export default {
       ],
     }
   },
-  computed: {
-    pageSlug() {
-      return this.$route.params.services
-    },
-  },
   //   head() {
   //     return this.$headUtil({
   //       title: this.metaData.title,
@@ -40,6 +36,9 @@ export default {
   //       image: this.metaData.image,
   //     })
   //   },
+  mounted() {
+    this.name = this.$route.params.services
+  },
   methods: {
     goBack() {
       return this.$router.go(-1)
