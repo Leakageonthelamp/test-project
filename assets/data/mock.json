@@ -1,6 +1,7 @@
 {
   "mockData": {
     "title": "Test Title from mock",
-    "description": "Test Description from mock"
+    "description": "Test Description from mock",
+    "image": "/share_image/wall-panel-form.png"
   }
 }
