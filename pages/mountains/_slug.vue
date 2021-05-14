@@ -1,10 +1,10 @@
 <template>
   <div>
-    <SocialHead
+    <!-- <SocialHead
       :title="metaData.title"
       :description="metaData.description"
       :image="metaData.image"
-    />
+    /> -->
     <div>{{ metaData.title }}</div>
     <div>{{ metaData.description }}</div>
   </div>
@@ -18,16 +18,24 @@ export default {
     metaData: meta.mockData,
   }),
   head() {
-    return {
-      link: [
-        {
-          hid: 'canonical',
-          rel: 'canonical',
-          href: this.$route.fullPath,
-        },
-      ],
-    }
+    return this.$headUtil({
+      title: this.metaData.title,
+      description: this.metaData.description,
+      urlPath: this.$route.fullPath,
+      image: this.metaData.image,
+    })
   },
+  //   head() {
+  //     return {
+  //       link: [
+  //         {
+  //           hid: 'canonical',
+  //           rel: 'canonical',
+  //           href: this.$route.fullPath,
+  //         },
+  //       ],
+  //     }
+  //   },
   methods: {
     goBack() {
       return this.$router.go(-1)
