@@ -1,11 +1,9 @@
 <template>
-  <client-only>
-    <div>
-      {{ pageSlug }}
-      <div>{{ metaData.title }}</div>
-      <div>{{ metaData.description }}</div>
-    </div>
-  </client-only>
+  <div>
+    {{ pageSlug }}
+    <div>{{ metaData.title }}</div>
+    <div>{{ metaData.description }}</div>
+  </div>
 </template>
 
 <script>
@@ -31,7 +29,7 @@ export default {
   },
   computed: {
     pageSlug() {
-      return this.$route.params.solution
+      return this.$route.params.services
     },
   },
   //   head() {
