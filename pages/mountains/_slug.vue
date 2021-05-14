@@ -5,12 +5,8 @@
       :description="metaData.description"
       :image="metaData.image"
     />
-    <h1>{{ mountain.title }}</h1>
-    <section>
-      <img :src="mountain.image" :alt="mountain.title" />
-      <p>{{ mountain.description }}</p>
-    </section>
-    <button @click="goBack">Back</button>
+    <div>{{ metaData.title }}</div>
+    <div>{{ metaData.description }}</div>
   </div>
 </template>
 
@@ -18,12 +14,6 @@
 import meta from '@/assets/data/mock.json'
 
 export default {
-  async asyncData({ params }) {
-    const mountain = await fetch(
-      `https://api.nuxtjs.dev/mountains/${params.slug}`
-    ).then((res) => res.json())
-    return { mountain }
-  },
   data: () => ({
     metaData: meta.mockData,
   }),
